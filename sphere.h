@@ -7,11 +7,11 @@
 // i tretiramo ih na isti način kad računamo pogotke zraka.
 class sphere: public hittable {
     public:
-        sphere() {}
-        sphere(vec3 cen, float r, material *m) : center(cen), radius(r), mat_ptr(m)  {};
+        __device__ sphere() {}
+        __device__ sphere(vec3 cen, float r, material *m) : center(cen), radius(r), mat_ptr(m)  {};
         
         // Ova metoda provjerava da li naš zrak siječe sferu.
-        virtual bool hit(const ray& r, float t_min, float t_max, hit_record& rec) const;
+        __device__ virtual bool hit(const ray& r, float t_min, float t_max, hit_record& rec) const;
         
         vec3 center;       // Centar sfere u 3D prostoru
         float radius;      // Poluprečnik sfere
@@ -19,7 +19,7 @@ class sphere: public hittable {
 };
 
 // Ovdje pišemo samu logiku za računanje presjeka zraka i sfere.
-bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const {
+__device__ bool sphere::hit(const ray& r, float t_min, float t_max, hit_record& rec) const {
     vec3 oc = r.origin() - center; // Vektor od centra sfere do početka zraka
     
     // Računamo koeficijente za kvadratnu jednačinu.
