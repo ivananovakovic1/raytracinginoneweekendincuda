@@ -4,7 +4,7 @@
 struct hit_record;
 
 #include "ray.h"
-#include "hittable.h"
+#include "hitable.h"
 
 // Pomoćna funkcija za računanje odbijanja (refleksije) svjetlosti.
 // Kada se zrak odbije od savršenog ogledala, upadni ugao je jednak uglu odbijanja.
